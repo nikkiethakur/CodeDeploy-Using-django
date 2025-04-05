@@ -1,16 +1,13 @@
 #!/bin/bash
 
-# Go to the app directory
-cd /var/www/html/Hello
+# Make sure templates folder exists
+mkdir -p /var/www/html/Hello/myproject/templates
 
-# Ensure templates directory exists
-mkdir -p myproject/templates
+# Move codepipeline.html into the templates directory
+cp /var/www/html/Hello/temp/codepipeline.html /var/www/html/Hello/myproject/templates/
 
-# Move HTML file to templates
-cp codepipeline.html myproject/templates/
+# Cleanup
+rm -rf /var/www/html/Hello/temp
 
-# Set proper permissions (optional, helpful for troubleshooting)
-chmod 644 myproject/templates/codepipeline.html
-
-# Restart Apache to reflect changes
+# Restart Apache
 sudo systemctl restart apache2
