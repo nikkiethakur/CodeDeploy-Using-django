@@ -1,16 +1,16 @@
 #!/bin/bash
 
-# Navigate to your Django project directory
+# Go to the app directory
 cd /var/www/html/Hello
 
-# Create a temp folder to hold the incoming HTML file
-mkdir -p temp
+# Ensure templates directory exists
+mkdir -p myproject/templates
 
-# Copy the codepipeline.html file from temp to Django's templates directory
-cp temp/codepipeline.html /var/www/html/Hello/myproject/templates/
+# Move HTML file to templates
+cp codepipeline.html myproject/templates/
 
-# Remove the temp folder after copying
-rm -rf temp
+# Set proper permissions (optional, helpful for troubleshooting)
+chmod 644 myproject/templates/codepipeline.html
 
-# Restart Apache to apply changes
+# Restart Apache to reflect changes
 sudo systemctl restart apache2
