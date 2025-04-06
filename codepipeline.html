@@ -8,31 +8,43 @@
         body {
             margin: 0;
             padding: 0;
+            background: linear-gradient(135deg, #1f4037, #99f2c8);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #00c6ff, #0072ff);
             color: #fff;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .container {
             max-width: 900px;
             margin: 60px auto;
-            background-color: #ffffff;
-            color: #333;
+            background: rgba(255, 255, 255, 0.15);
             padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
-            border: 3px solid #00c6ff;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h1 {
-            color: #0072ff;
-            font-size: 36px;
-            border-bottom: 2px solid #0072ff;
+            color: #ffffff;
+            font-size: 40px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #00ffc8;
             padding-bottom: 10px;
         }
 
         h2 {
-            color: #00aaff;
+            color: #00ffc8;
             margin-top: 30px;
             font-size: 28px;
         }
@@ -44,24 +56,48 @@
         li {
             margin-bottom: 12px;
             font-size: 18px;
+            position: relative;
+        }
+
+        li::before {
+            content: "✔️";
+            position: absolute;
+            left: -25px;
+            color: #00ffc8;
         }
 
         p {
-            font-size: 17px;
+            font-size: 18px;
             line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background-color: #00ffc8;
+            color: #1f4037;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #00c4a7;
         }
 
         .footer {
             text-align: center;
             margin-top: 40px;
             font-size: 14px;
-            color: #aaa;
+            color: #ddd;
         }
 
         @media (max-width: 600px) {
             .container {
-                padding: 20px;
-                margin: 30px 15px;
+                padding: 25px;
+                margin: 20px;
             }
         }
     </style>
