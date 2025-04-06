@@ -1,13 +1,29 @@
 #!/bin/bash
 
-# Make sure templates folder exists
-mkdir -p /var/www/html/Hello/myproject/templates
+echo "Running deploy.sh..."
 
-# Move codepipeline.html into the templates directory
-cp /var/www/html/Hello/temp/codepipeline.html /var/www/html/Hello/myproject/templates/
+# Paths
+PROJECT_DIR="/var/www/html/Hello"
+TEMPLATE_DIR="$PROJECT_DIR/templates"
+TEMP_DIR="$PROJECT_DIR/temp"
+HTML_FILE="codepipeline.html"
+
+# Make sure templates folder exists
+mkdir -p "$TEMPLATE_DIR"
+
+# Move the HTML file if it exists
+if [ -f "$TEMP_DIR/$HTML_FILE" ]; then
+    cp "$TEMP_DIR/$HTML_FILE" "$TEMPLATE_DIR/"
+    echo "$HTML_FILE copied to templates/"
+else
+    echo "Warning: $HTML_FILE not found in $TEMP_DIR"
+fi
 
 # Cleanup
-rm -rf /var/www/html/Hello/temp
+rm -rf "$TEMP_DIR"
+echo "Temporary files cleaned up."
 
 # Restart Apache
-sudo systemctl restart apache2
+systemctl restart apache2
+
+echo "deploy.sh completed."
